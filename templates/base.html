@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<!-- <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}/favicon.ico"/> -->
+		<link rel="shortcut icon" type="image/png" href="/static/favicon.ico"/>
+		<script src="/static/js/A-Frame/aframe.min.js"></script>
+		<script src="/static/js/LITEroomJS/LITEroom_0.37Beta.js"></script>
+		<link href="/static/css/immersive_style.css" rel="stylesheet"/>
+		<title>{{ title_text }}</title>
+	</head>
+	<body style="margin : 0px; overflow: hidden;">
+		{% block body_block %}
+		{% endblock %}
+		<!-- FOOTER CODE -->
+		<script src="/static/js/jQuery/jquery-3.3.1.min.js"></script>
+		<script src='/static/js/jQuery/jquery.contextMenu-2.6.4.min.js'></script>
+		<script src='/static/js/helper_functions_vr.js'></script>
+		<script>
+		<!--
+			$(document).ready(function() {
+				startupFunctions();
+			});
+		-->
+		</script>
+		<script src='/static/js/helper_functions.js'></script>
+	</body>
+</html>
