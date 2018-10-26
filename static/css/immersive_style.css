@@ -1,0 +1,586 @@
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
+div.warning {
+	background:pink;
+	border-style:solid;
+	padding: 2em;
+	margin: 1em 0px;
+}
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+
+/* -------------------------------------------------------------------------------- */
+/* form styles */
+fieldset {
+	border-radius: 10px;
+	border: solid 2px;
+	padding: 1em 2em;
+	margin: 1em 0px;
+	background: white;
+}
+fieldset legend {
+	border: solid 2px;
+	padding: 5px 1em;
+	background: white;
+}
+div.form {
+	padding: 5px 0px;
+	overflow: hidden;
+}
+div.form > label {
+	clear:both;
+	float: left;
+	width: 33%;
+	line-height: 2.3em;
+	vertical-align: middle;
+}
+div.form > input {
+	float:right;
+	width:64%;
+	max-width:64%;
+	line-height: 2.3em;
+}
+div.form > input:disabled {
+	background: lightgray;
+}
+div.form > input[type="file"] {
+	border: 0px;
+}
+div.form > select {
+	float:right;
+	width:64%;
+	max-width:64%;
+	line-height: 2.3em;
+	font-size:12px;
+	/*padding:14px;*/
+	border-radius: 3px;
+}
+div.form > textarea {
+	float:right;
+	width:64%;
+	max-width:64%;
+}
+
+div.form > div {
+	float:right;
+	width:64%;
+	max-width:64%;
+	line-height: 2.3em;
+}
+
+div.form.onecolmax > label {
+	display: none;
+}
+
+div.form.onecolmax > select {
+	width: 100%;
+	max-width: 100%;
+	float: left;
+}
+
+div.form > input, div.form > select, div.form > textarea {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+select:disabled {
+	background: grey;
+}
+/* -------------------------------------------------------------------------------- */
+div.greybox {
+	background: #CDCDCD;
+	padding: 2em 1.5em 1em 1.5em;
+	border-radius: 15px;
+	margin: 1em;
+}
+
+div.blackbox {
+	opacity: 0.8;
+	background: #000000;
+	padding: 1em 1.5em;
+	border-radius: 15px;
+	margin: 1em;
+	width:25%;
+	/*height:150px;*/
+	position:absolute;
+	overflow-y: auto;
+}
+
+div.blackbox p {
+	color: white;
+}
+/* -------------------------------------------------------------------------------- */
+/* header styles */
+html {
+	font-family: Arial,Helvetica,"Nimbus Sans L",sans-serif;
+	font-size: 12px;
+	/*height:100%;*/
+}
+body {
+	background-color: #f1f1f1;
+	color: var(--bodyColor);
+	font-size: var(--bodyFontSize);
+	font-weight: var(--bodyFontWeight);
+	/*height: 100%;*/
+	line-height: var(--bodyLineHeight);
+	margin: 0px;
+	/*display:block;*/
+	/*overflow:auto;*/
+	/*min-height: 100%;*/
+}
+header {
+	font-weight: 400;
+	/*width: 100%;*/
+	/*color: white;*/
+	background-color: white;
+	padding: 20px;
+	/*padding-bottom: 44px;*/
+	border-bottom: #fcd600 10px solid;
+	overflow:auto;
+}
+header div.unsw_logo_div {
+	float:left;
+	height: 70px;
+	max-height:70px;
+	display:flex;
+	align-items: center;
+	padding-right: 40px;
+}
+header div.immersive_logo_div {
+	float:left;
+	height: 70px;
+	max-height:70px;
+	display:flex;
+	align-items: center;
+}
+header div.logged_in_user_div {
+	float:right;
+	height: 70px;
+	max-height:70px;
+	display:flex;
+	align-items: center;
+}
+header div.unsw_logo_div a img {
+	height: 70px;
+}
+header div.logged_in_user_div span {
+	display: inline-block;
+	text-decoration:none;
+	font-size: 15px;
+	cursor: pointer;
+}
+header div.logged_in_user_div span::after {
+	content: " â–¼";
+}
+header div.unsw_logo_div h1 {
+	display: inline-block;
+	font-weight: normal;
+	font-size: 32px;
+	line-height: 1.2em;
+	margin: 0px;
+	/*padding-top: 10px; */
+}
+div.loading_overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	display: block;
+	z-index: 99;
+	background: rgba(255, 255, 255, .7);
+}
+div.loading_overlay img {
+	background-image: url("/images/loadingoverlay.gif");
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	background-size: 100%;
+}
+div.loadingimg {
+	display:inline;
+	visibility: hidden;
+}
+div.loadingimg:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin-top: 3px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #07d;
+  animation: spinner .6s linear infinite;
+}
+div.input_loading {
+	display:block;
+	visibility: hidden;
+}
+div.input_loading:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-top: -25px;
+  margin-left: -110px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #07d;
+  animation: spinner .6s linear infinite;
+}
+div.loading_overlay div {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	background-size: 100%;
+}
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+input.loading {
+    background-image: url("/images/input_loading.gif");
+    background-size: 15px;
+    background-position:right center;
+    background-repeat: no-repeat;
+}
+div.loading_overlay div:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  margin-top: 3px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #07d;
+  animation: spinner .6s linear infinite;
+}
+/* -------------------------------------------------------------------------------- */
+/* Footer styles */
+footer {
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	background-color: #2e2e2e;
+}
+footer.clearfix {
+	content:"";
+	display:table;
+	clear:both;
+}
+#backtotop {
+	background: transparent url(/images/footer/back-to-top-icon.png) no-repeat scroll center right;
+}
+div.back-to-top {
+	margin: 0px;
+	float: right;
+	clear: both;
+}
+#block-unswshareblock ul#icons li > a.print {
+    background: url(/images/footer/print-icon.png) no-repeat right 5px top 0px;
+}
+#block-unswshareblock ul#icons li > a.share {
+	background: url(/images/footer/share-icon.png) no-repeat right 13px top 0px;
+}
+#block-unswshareblock ul#icons li div.share-box ul li a.facebook {
+	background: transparent url(/images/footer/facebook-icon.png) left center no-repeat;
+}
+#block-unswshareblock ul#icons li div.share-box ul li a.twitter {
+	background: transparent url(/images/footer/twitter-icon.png) left center no-repeat;
+}
+#block-unswshareblock ul#icons li div.share-box ul li a.googlebookmarks {
+	background: transparent url(/images/footer/google-icon.png) left center no-repeat;
+}
+#block-unswshareblock ul#icons li div.share-box ul li a.email {
+	background: transparent url(/images/footer/email-icon.png) left center no-repeat;
+}
+/* -------------------------------------------------------------------------------- */
+/* main body and side nav styles */
+main.main {
+	position: relative;
+	max-width: 100%;
+	padding: 0px;
+}
+div.side_nav {
+	width: 200px;
+	min-height: 210px;
+    float: left;
+    background-color: #3b4148;
+}
+span.side_nav_background_fill {
+	width: inherit;
+	background-color: #3b4148;
+	position: absolute;
+	height:100%;
+}
+div.side_nav_tabs {
+	width: 200px;
+	position: absolute;
+}
+div.container {
+	margin-left: 200px;
+	padding: 15px;
+	width: auto;
+	overflow:auto;
+}
+div.side_nav_tabs ul {
+	list-style-type: none;
+	width: 100%;
+	height: 100%;
+	float: left;
+	padding-left: 0px;
+}
+div.side_nav_tabs li a {
+	display: block;
+	padding: 20px 0px 20px 20px;
+	height: 100%;
+	text-decoration: none;
+	text-align: left;
+	color: white;
+	font-size: 18px;
+}
+div.side_nav_tabs li a.active {
+	background-color: #f1f1f1;
+	color: black;
+}
+div.side_nav_tabs li a:hover:not(.active){
+	background-color: #2c3338;
+	color: white;
+}
+/* -------------------------------------------------------------------------------- */
+/* UNSW override */
+body select {
+	background: transparent url(/images/select-down-arrow.png) right center no-repeat;
+	background-color: #fff;
+}
+main > * {
+	margin-top: 0px;
+}
+div.unsw-note {
+	background-image: url(/images/unsw_note.png);
+	background-color: white;
+	background-position: 2px 20px;
+}
+input.form.button:disabled {
+	background: lightgray;
+}
+input.form.button.warning {
+	background: #dc3545;
+	color: white;
+}
+input.form.button.update {
+	background: #ffc107;
+}
+input.form.button.update:hover {
+	background: yellow;
+}
+input.form.button.update:disabled, input.form.button.warning:disabled {
+	background: lightgray;
+	color: black;
+}
+/* -------------------------------------------------------------------------------- */
+
+div.stat_graph {
+	background-color: white;
+	width: 40%;
+}
+
+div.stats_card {
+	display: table-cell;
+	height:150px;
+	width: 300px;
+	background-color: white;
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-right: 20px;
+}
+
+p {
+	margin: 10px;
+}
+
+div.top_stats_div {
+	width: 100%;
+	/*background: white;*/
+	/*border: 2px solid #c9c9c9;*/
+}
+
+div.top_stats_div table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+div.top_stats_div table tr td {
+	padding:2px;
+	text-align: center;
+}
+
+div.top_stats_card {
+	opacity: 0.8;
+	background: #000000;
+	padding: 5px;
+	border-radius: 15px;
+	color: white;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* A-Frame start-div styles */
+
+div.startDiv {
+	background-color: #fff;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+div.startDiv div.welcome {
+	background-color: #fc0;
+	text-align: center;
+	position: absolute;
+	width: 100%;
+	padding: 10px;
+}
+
+div.startDiv div.loadDiv {
+	text-align: center;
+	position: absolute;
+	width: 100%;
+	padding: 10px;
+}
+
+div.startDiv div.welcome select,
+div.startDiv div.welcome input,
+div.startDiv div.welcome div.title {
+	margin: 5px;
+}
+
+div.startDiv div.welcome p {
+	margin-bottom:0px;
+	font-size: 20px;
+}
+
+div.startDiv div.welcome input[type="button"] {
+	width: 150px;
+	height: 50px;
+	font-size: 18px;
+	margin-top: 20px;
+}
+
+div.startDiv div.welcome h2,
+div.startDiv div.welcome h3 {
+	margin: 0px;
+}
+
+div.startDiv div.welcome div.inputs {
+	display: inline-block;
+}
+
+div.startDiv div.welcome div.inputs select, div.startDiv div.welcome div.inputs input {
+	display: block;
+}
+
+div.startDiv div.welcome div.inputs select {
+	width: 167px;
+}
+
+div.startDiv div.welcome div.inputs input {
+	width: 163px;
+}
+
+div.startDiv div.welcome div.input_submit input {
+	width: 163px;
+}
+
+div.startDiv div.loadDiv div.spinner:before {
+	content: '';
+	position: absolute;
+	width: 40px;
+    height: 40px;
+	margin-top: 5px;
+    margin-left: -25px;
+	border-radius: 50%;
+	border: 2px solid #ccc;
+	border-top-color: #07d;
+	animation: spinner .6s linear infinite;
+}
+
+div.startDiv div.credit {
+	position: absolute;
+	bottom: 5px;
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+}
+
+#sceneDiv {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* A-Frame unsw logo styles */
+div.unsw_logo img {
+  position: absolute;
+  left: 2%;
+  bottom: 1%;
+  width: 300px;
+  height: 120px;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* A-Frame mobile screen styles */
+
+@media screen and (max-height: 520px) {
+	div.unsw_logo img {
+		width: 150px;
+		height: 60px;
+	}
+}
+
+@media screen and (max-width: 520px) {
+	div.unsw_logo img {
+		width: 150px;
+		height: 60px;
+	}
+}
+
+@media screen and (max-width: 620px) {
+	div.startDiv div.credit{
+		position: absolute;
+		bottom: 5px;
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+	}
+
+	div.startDiv div.welcome {
+		width: 100%;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		font-size: 15px;
+	}
+}
+
+@media screen and (max-height: 620px) {
+	div.aframe_start div.credit{
+		font-size: 10px;
+	}
+}

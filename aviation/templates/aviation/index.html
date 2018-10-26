@@ -1,0 +1,370 @@
+{% extends "base.html" %}
+{% block body_block %}
+    <script>
+        var os = getMobileOperatingSystem();
+        var isMobile = false;
+        if(os != "unknown")
+        isMobile = true;
+        var useMouseOnDesktop = false;
+    </script>
+    <div class='startDiv'>
+		<div class='loadDiv'>
+			<div>Loading...</div>
+			<div class='spinner'></div>
+		</div>
+		<div class='welcome hidden' >
+			<div class='title'>
+				<h2>Welcome to Aviation VR</h2>
+				<div style='margin-bottom:10px;'></div>
+				Immersive Technologies<br/><i>Everything can be Visualised</i>
+			</div>
+			<div class='start'>
+				<input type='button' value='Start' onclick='StartExperience();'/>
+			</div>
+		</div>
+		<div class='credit'>
+			<b>Immersive Technologies</b> (LITEroom), Educational Delivery Services, PVCE, UNSW<br/>
+			...<br/>
+			<b>Mr. Chin Wang</b>, Lead Application Developer, Immersive Technologies<br/>
+			For more information, contact <b>Luis (Carlos) Dominguez</b> (l.dominguez@unsw.edu.au), Immersive Technologies Lead
+		</div>
+	</div>
+
+<div id="sceneDiv" style='display:none;'>
+  <a-scene>
+    <a-assets>
+      <video crossorigin='anonymous' playsinline id='tutorialVid' src='https://s3-ap-southeast-2.amazonaws.com/unsw-immersive-solutions-data/360+aviation+agsm/aviationVRtutorial1_1.mp4'></video>
+      <img crossorigin="anonymous" id="intro_img" src="/static/images/aviation_intro_image.png"/>
+      <!-- <img id="play_btn_img" crossorigin="anonymous" src="https://s3-ap-southeast-2.amazonaws.com/unsw-immersive-solutions-data/textures/play_button.png"/>
+      <img id="pause_btn_img" crossorigin="anonymous" src="/images/aviation/pause_button.png"/> -->
+      <img id="play_btn_img" crossorigin="anonymous" src="/static/images/play.png"/>
+      <img id="pause_btn_img" crossorigin="anonymous" src="/static/images/stop.png"/>
+      <img id="btn_selected_img" crossorigin="anonymous" src="/static/images/button_active.png"/>
+      <img id="btn_img" crossorigin="anonymous" src="/static/images/button_inactive.png"/>
+      <img id="menu_active_img" crossorigin="anonymous" src="/static/images/menu_active.png"/>
+      <img id="menu_inactive_img" crossorigin="anonymous" src="/static/images/menu_inactive.png"/>
+      <img id="panel_bottom" crossorigin="anonymous" src="/static/images/panel_botton2.png"/>
+      <img id="panel_top" crossorigin="anonymous" src="/static/images/panel_top.png"/>
+      <img id="panel_logo" crossorigin="anonymous" src="/static/images/unsw_logo.png"/>
+      <img id="tail" crossorigin="anonymous" src="/static/images/tail.png"/>
+
+    </a-assets>
+    <a-entity id="camera" position="0 1.6 0">
+        <a-entity id="subcamera" position="0 -1.6 0">
+            <a-camera fov="60" lite_animated_cursor></a-camera>
+        </a-entity>
+
+    </a-entity>
+
+    <a-entity position="0 0 -9">
+      <a-entity id="loadingVideoMsg" visible="false">
+        <a-text value="Loading video..." width="10" color="#5080EE" align="center"></a-text>
+      </a-entity>
+      <a-entity id="loadingVideoMsgBuffer" visible="false" position="0 -0.5 0">
+        <a-text value="Buffering..." width="10" color="#5080EE" align="center"></a-text>
+      </a-entity>
+      <a-entity id="loadingVideoMsgError" visible="false">
+        <a-text value="Loading error! Please retry the tutorial" width="10" color="#DD3020" align="center"></a-text>
+      </a-entity>
+    </a-entity>
+  <!-- here I am -->
+
+  <a-entity id="menu_container" rotation="-35 0 0" lite.follow-camera-rotation position="0 1.6 0" onmouseleave="MouseLeave('M')" onmouseenter="MouseEnter('M')">
+    <a-plane class="raycast" geometry="width: 2; height: 2;" visible="false" position="0 0 -5.2" onmouseenter="ShowCursor()" onmouseleave="TryHideCusor()"></a-plane>
+    <a-entity id="menu_btn" position="0 0 -5" lite_round_button="bgOpacity:0; radius: 0.25; bgColor: black; fgColor: white; margin: 0.02; label: #menu_inactive_img; labelType: image;
+    onclick:ShowMenu();">
+
+      <a-entity id="menu_list_cont" lite_popup_anim scale="0 0 0" >
+        <a-plane class="raycast" position="0 0.6 -0.1" material="color: #000; opacity: 0.4" visible="false" geometry="width: 4.2; height: 1.7;" lite_trigger_area></a-plane>
+        <a-entity id="menu_popup" lite_popup_anim scale="0 0 0">
+          <a-plane class="raycast" width="4" height="4" color="#000" opacity="0" position="0 2 0"></a-plane>
+          <a-entity id="video_grid_container" lite_popup_anim="durout:1500;">
+            <a-entity position="0 1 0.2" scale="0.3 0.3 0.3">
+              <a-entity id="video_grid_top" position="0 8 0">
+                <a-plane position="0 0 -0.1" src="#panel_top" height="2" width="12"  material="transparent:true" ></a-plane>
+                <a-plane position="-3.5 0 0" src='#panel_logo'  material="transparent:true" width="2.5"></a-plane>
+                <a-text value="| Pilot Training" text="color:black" width="12" position="-2.2 0 0"></a-text>
+              </a-entity>
+              <a-entity id="video_grid_body" position="0 3.3 0">
+                <a-entity position="0 1.7 0.5">
+                  <a-entity name="tutorial_btn" position="-3 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 01; onclick: OnClick(this, 1); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                  <a-entity name="tutorial_btn" position="0 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 02; onclick: OnClick(this, 2); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                  <a-entity name="tutorial_btn" position="3 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 03; onclick: OnClick(this, 3); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                </a-entity>
+                <a-entity position="0 0.6 0.5">
+                  <a-entity name="tutorial_btn" position="-3 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 04; onclick: OnClick(this, 4); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                  <a-entity name="tutorial_btn" position="0 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 05; onclick: OnClick(this, 5); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                  <a-entity name="tutorial_btn" position="3 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 06; onclick: OnClick(this, 6); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                </a-entity>
+                <a-entity position="0 -0.5 0.5">
+                  <a-entity name="tutorial_btn" position="-3 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 07; onclick: OnClick(this, 7); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                  <a-entity name="tutorial_btn" position="0 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 08; onclick: OnClick(this, 8); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                  <a-entity name="tutorial_btn" position="3 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 09; onclick: OnClick(this, 9); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                </a-entity>
+                <a-entity position="0 -1.6 0.5">
+                  <a-entity name="tutorial_btn" position="-3 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 10; onclick: OnClick(this, 10); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                  <a-entity name="tutorial_btn" position="0 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 11; onclick: OnClick(this, 11); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                  <a-entity name="tutorial_btn" position="3 0 0" lite_button="fgColor: #33333f; width: 3; height: 1; label: Tutorial 12; onclick: OnClick(this, 12); labelXPosition: 0.3;">
+                    <a-plane src='#play_btn_img' position='-0.9 0 0.1' material="transparent:true" scale="0.5 0.5 0.5"></a-plane>
+                  </a-entity>
+                </a-entity>
+                <a-plane position="0 0 -0.1" color="white" height="7" width="12" material="transparent:true" opacity="0.5"></a-plane>
+              </a-entity>
+              <a-entity id="video_grid_bottom" position="0 -1.3 0">
+                <a-plane position="0 0 -0.1" src="#panel_bottom" height="2" width="12" material="transparent:true"></a-plane>
+                <!-- <a-plane position="0 -1 -0.1" src="#tail" height="1" width="1" material="transparent:true"></a-plane> -->
+                <a-entity id="aplane_play_pause" position="-4.2 0 0.5" lite_round_button="bgOpacity:0; fgOpacity:0;radius: 0.5;  fgColor: white; margin: 0.02; label: #play_btn_img; labelType: image; onclick: PlayPauseVideo(this);" tag="paused"></a-entity>
+                <!-- <a-entity id="aplane_play" position="-4.2 0.1 0.5" material="transparent:true" lite_round_button="fgOpacity:0;radius: 0.5;  fgColor: white; margin: 0.02; label: #play_btn_img; labelType: image; onclick: ResumeVideo();"></a-entity> -->
+                <!-- <a-plane id="" src='#' position='-4.396 0 -0.05'  onclick='PauseVideo()' material='transparent:true; shader: flat;depthWrite:false;' lite.responsive_cursor='bcolor_sel: #fc0; bcolor: #fff;'></a-plane> -->
+                <!-- <a-plane id="aplane_play" src='#' position='-4.396 0 -0.05'  onclick='ResumeVideo()' material='transparent:true; shader: flat;depthWrite:false;' lite.responsive_cursor='bcolor_sel: #fc0; bcolor: #fff;' visible="false"></a-plane> -->
+                <!-- <a-plane src='#play_btn_img' position='-4.396 0 -0.05' material="transparent:true" scale="1 1 1"></a-plane> -->
+                <a-text value="Now playing" text="color:white" width="7" position='-3.5 0.282 -0.05'></a-text>
+                <a-text id="atext_nowplaying_text" value="Choose a clip" text="color:white" width="10" position='-3.5 -0.2 -0.05'></a-text>
+                <a-entity lite.videoplayer="playBtn_visible:false;vid: tutorialVid; width: 2.4; height: 0.03; sk_width: 0.05; sk_height: 0.05; sk_color: #000; txt_width: 0.001" scale="2 2 2" position="2.1 0 0"></a-entity>
+              </a-entity>
+            </a-entity>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+  </a-entity>
+
+  <a-sky id="asky_intro_image" src="#intro_img" rotation="0 170 0"></a-sky>
+  <a-videosphere id="videosphere" src="#tutorialVid" rotation="0 170 0"></a-videosphere>
+  </a-scene>
+</div>
+<script>
+  var course = 'Unnamed Course';
+  var videos = JSON.parse('{"1":{"id":"tutorial_1","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial1_1.mp4","str_display":"Tutorial 01"},"2":{"id":"tutorial_2","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial2_1.mp4","str_display":"Tutorial 02"},"3":{"id":"tutorial_3","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial3_1.mp4","str_display":"Tutorial 03"},"4":{"id":"tutorial_4","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial4_1.mp4","str_display":"Tutorial 04"},"5":{"id":"tutorial_5","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial5_1.mp4","str_display":"Tutorial 05"},"6":{"id":"tutorial_6","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial6_1.mp4","str_display":"Tutorial 06"},"7":{"id":"tutorial_7","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial7_1.mp4","str_display":"Tutorial 07"},"8":{"id":"tutorial_8","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial8_1.mp4","str_display":"Tutorial 08"},"9":{"id":"tutorial_9","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial9_1.mp4","str_display":"Tutorial 09"},"10":{"id":"tutorial_10","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial10_1.mp4","str_display":"Tutorial 10"},"11":{"id":"tutorial_11","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial11_1.mp4","str_display":"Tutorial 11"},"12":{"id":"tutorial_12","url":"https:\/\/s3-ap-southeast-2.amazonaws.com\/unsw-immersive-solutions-data\/360+aviation+agsm\/aviationVRtutorial12_1.mp4","str_display":"Tutorial 12"}}');
+  var currentVideoID = 1;
+  var first_video_loaded = false;
+  var a_camera = document.querySelector("a-camera");
+
+    $_('a-scene').addEventListener('loaded', function() {
+    	$_("div.loadDiv").style.display = "none"; // Hide the loading animation
+    	$("div.welcome").removeClass("hidden"); // Show the welcome message
+    });
+
+
+  function MouseLeave(st){
+    switch (st){
+      case 'M':
+        if(!menuShowing) break;
+        timeoutM = setTimeout(function(){
+          HideMenu();
+          timeoutM = undefined;
+        }, timeout);
+        break;
+    }
+  }
+  function MouseEnter(st){
+    if(window["timeout" + st] !== undefined){
+      clearTimeout(window["timeout" + st]);
+      window["timeout" + st] = undefined;
+    }
+  }
+
+  function Popout(param){
+          document.getElementById(param + "_popup").emit("popout");
+      }
+      function Popin(param){
+          document.getElementById(param + "_popup").emit("popin");
+      }
+
+  var menuShowing = false;
+      function ShowMenu(){
+          // a_camera.setAttribute("lite_animated_cursor", "visible", true);
+    Popout('menu');
+          document.getElementById("menu_container").setAttribute("lite.follow-camera-rotation", "enabled", false);
+          document.getElementById("menu_list_cont").emit("popout");
+          document.getElementById("menu_btn").setAttribute("lite_round_button", {active: false});
+    $_('#menu_btn').setAttribute("lite_round_button", "label", "#menu_active_img");
+          menuShowing = true;
+      }
+      function HideMenu(){
+          // a_camera.setAttribute("lite_animated_cursor", "visible", false);
+          document.getElementById("menu_container").setAttribute("lite.follow-camera-rotation", "enabled", true);
+          document.getElementById("menu_list_cont").emit("popin");
+          document.getElementById("menu_btn").setAttribute("lite_round_button", {active: true});
+    $_('#menu_btn').setAttribute("lite_round_button", "label", "#menu_inactive_img");
+          menuShowing = false;
+      }
+
+  function PauseVideo() {
+    showHideEntity($('#aplane_play'));
+    showHideEntity($('#aplane_pause'), false);
+    $_('#tutorialVid').pause();
+    console.log("pause");
+  }
+
+  function ResumeVideo() {
+    showHideEntity($('#aplane_pause'));
+    showHideEntity($('#aplane_play'), false);
+    $_('#tutorialVid').play();
+    console.log("resume");
+  }
+
+  function PlayPauseVideo(el) {
+    if (el.getAttribute("tag") == "paused") {
+      //play the video
+      el.setAttribute("lite_round_button", "label", "#pause_btn_img");
+      $_('#tutorialVid').play();
+      // console.log("resume");
+      el.setAttribute("tag", "playing");
+      if ($_('#atext_nowplaying_text').getAttribute("text").value == "Choose a clip") {
+        $_('#atext_nowplaying_text').setAttribute("text", {value:"Tutorial 01"});
+      }
+    } else {
+      // pause the video
+      el.setAttribute("lite_round_button", "label", "#play_btn_img");
+      $_('#tutorialVid').pause();
+      el.setAttribute("tag", "paused");
+      // console.log("pause");
+    }
+  }
+
+  function PlayVideo() {
+    $_('#aplane_play_pause').setAttribute("lite_round_button", "label", "#pause_btn_img");
+    $_('#aplane_play_pause').setAttribute("tag", "playing");
+    $_('#asky_intro_image').setAttribute("visible", false);
+    $_('#videosphere').setAttribute("visible", true);
+    $_('#tutorialVid').currentTime = 0;
+    $_('#tutorialVid').play();
+
+    $_('#loadingVideoMsg').setAttribute("visible", true);
+    $_('#loadingVideoMsgError').setAttribute("visible", false);
+    $_('#tutorialVid').oncanplay = function(){
+      $_('#loadingVideoMsg').setAttribute("visible", false);
+    }
+    $_('#loadingVideoMsg').onerror = function(){
+      $_('#loadingVideoMsgError').setAttribute("visible", true);
+    }
+  }
+
+  document.getElementById('tutorialVid').addEventListener("waiting", function(){
+    if (first_video_loaded)
+      $('#loadingVideoMsgBuffer')[0].setAttribute("visible", true);
+  });
+
+  document.getElementById('tutorialVid').addEventListener("playing", function(){
+    $('#loadingVideoMsgBuffer')[0].setAttribute("visible", false);
+  });
+
+    function StartExperience(){
+        $('div.startDiv').css('display', 'none');
+        $('#sceneDiv').css('display', 'flex');
+
+        // $('#atext_nowplaying_text')[0].setAttribute("text", {value: "Now Playing - " + videos[1]["str_display"]});
+        if (isMobile) {
+          //for some reason, videos do not start properly on mobile, this is a way to get around that problem
+          $('#tutorialVid')[0].currentTime = 0;
+          $('#tutorialVid')[0].play();
+          $('#tutorialVid')[0].pause();
+        }
+        //$('a-scene')[0].enterVR();
+        record = setInterval(RecordHeadDirectionCustom, interval);
+        ShowMenu();
+    }
+
+  // var ignoreFirstOnClick = false;
+  function OnClick(element, video_id) {
+    // if (ignoreFirstOnClick) {
+      $('a-entity[name="tutorial_btn"]').each(function() {
+        this.setAttribute("lite_button", "active", "true");
+      });
+      element.setAttribute("lite_button", "active", "false");
+      LoadNewVideo(video_id);
+    // } else {
+      // ignoreFirstOnClick = true;
+    // }
+  }
+
+  var timeoutR, timeoutL, timeoutM, timeoutS, timeoutD, timeoutN;
+  var timeout = 200;
+
+
+  var interval = 1000; var record;
+
+  //code to stop the video playing if the user does not have the tab opened or they've pressed the power button on the phone
+  document.addEventListener("visibilitychange", function() {
+      if(document.hidden){
+          if (interval !== undefined) clearInterval(record);
+      } else {
+          if (interval !== undefined) record = setInterval(RecordHeadDirectionCustom, interval);
+      }
+  }, false);
+
+  function RecordHeadDirectionCustom() {
+      var rot = $('a-camera')[0].getAttribute("rotation");
+      var raw_data = "";
+      var category = "";
+      var video_str = videos[currentVideoID]['id'];
+      var video_str_display = videos[currentVideoID]["str_display"];
+
+      RecordHeadDirection($('a-camera'), {
+          'layer1' : video_str_display,
+          'layer2' : course,
+          // 'output_console' : true,
+          // 'store_to_db' : false,
+      });
+  }
+
+  function LoadNewVideo(index){
+    currentVideoID = index;
+    $('#atext_nowplaying_text')[0].setAttribute("text", {value: videos[index]["str_display"]});
+    $('#tutorialVid')[0].src = videos[index]["url"];
+    first_video_loaded = true;
+    PlayVideo();
+  }
+
+  var showingMenu = true;
+  function ToggleMenu(){
+      showingMenu = !showingMenu;
+      if(showingMenu){
+          $_("#video_grid_container").emit("popout");
+          $_('#video_grid_container').setAttribute("rotation", "y", $_('a-camera').getAttribute("rotation").y);
+          $_('#menu_btn').setAttribute("lite_round_button", "label", "#menu_active_img");
+
+      }else{
+          $_("#video_grid_container").emit("popin");
+          $_('#menu_btn').setAttribute("lite_round_button", "label", "#menu_inactive_img");
+      }
+  }
+
+  function showHideMenu() {
+    document.getElementById("menu_btn").setAttribute("lite_round_button", {active: true});
+    document.getElementById("menu_container").setAttribute("lite.follow-camera-rotation", "enabled", true);
+    // if (document.getElementById("video_grid_container").getAttribute("visible")) {
+    // 		//hide it
+    // 		showHideEntity($("#video_grid_container"), false);
+    // } else {
+    // 		//show it
+    // 		showHideEntity($("#video_grid_container"));
+    // 		$_('#video_grid_container').setAttribute("rotation", "y", $_('a-camera').getAttribute("rotation").y);
+    // }
+  }
+</script>
+</div>
+{% endblock %}
