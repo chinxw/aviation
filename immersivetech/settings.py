@@ -24,6 +24,7 @@ SECRET_KEY = '78l#sixnu((oigugm+0&)v2sufiw@55oelu)ynksg896%@)!x#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'db',
     'aviation',
+    'django_lti_auth',
 ]
 
 MIDDLEWARE = [
@@ -103,6 +105,19 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+PYLTI_CONFIG = {
+    "consumers": {
+        "2E99758548972A8E8822AD47FA1017FF72F06F3FF6A016851F45C398732BC50C": {
+            "secret": "this is a test"
+        }
+    },
+    # "method_hooks":{
+    #     "valid_lti_request":""
+    #     "invalid_lti_request":"<Specify method to call after validation of an invalid
+    # },
+    # "next_url":"<Default home page>"
+}
 
 
 # Internationalization

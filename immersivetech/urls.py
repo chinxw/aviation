@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from aviation import views as AviationView
+from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('aviation', AviationView.IndexView.as_view()),
+    path('lti/', include('django_lti_auth.urls')),
 ]
