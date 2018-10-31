@@ -17,9 +17,17 @@
 # done!
 
 FROM python:3.6
-ENV PYTHONUNBUFFERED 1
-RUN mkdir /code
-WORKDIR /code
-ADD requirements.txt /code/
-RUN pip install -r requirements.txt
-ADD . /code/
+# ENV PYTHONUNBUFFERED 1
+RUN mkdir /immersivetech3
+WORKDIR /immersivetech3
+ADD requirements.txt /immersivetech3/
+RUN pip3 install -r requirements.txt
+RUN virtualenv env
+RUN . env/bin/activate
+RUN pip3 install django
+RUN django-admin startproject immersivetech
+ADD . /immersivetech3/immersivetech
+
+# RUN cd immersivetech && ls
+# RUN python3 /immersivetech3/immersivetech/manage.py makemigrations db
+# RUN python3 /immersivetech3/immersivetech/manage.py migrate
