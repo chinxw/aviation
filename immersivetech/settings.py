@@ -25,6 +25,9 @@ SECRET_KEY = '78l#sixnu((oigugm+0&)v2sufiw@55oelu)ynksg896%@)!x#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # DEBUG = False
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# CORS_ALLOW_CREDENTIALS = True
 
 ALLOWED_HOSTS = []
 
@@ -112,11 +115,11 @@ PYLTI_CONFIG = {
             "secret": "this is a test"
         }
     },
-    # "method_hooks":{
-    #     "valid_lti_request":""
-    #     "invalid_lti_request":"<Specify method to call after validation of an invalid
-    # },
-    # "next_url":"<Default home page>"
+    "method_hooks":{
+        "valid_lti_request":"",
+        "invalid_lti_request":""
+    },
+    "next_url":""
 }
 
 
