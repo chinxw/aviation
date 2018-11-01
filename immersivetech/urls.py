@@ -20,6 +20,6 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('aviation', AviationView.IndexView.as_view()),
+    path('aviation', AviationView.IndexView.your_view, name="aviation"),
     path('lti/', include('django_lti_auth.urls')),
 ]
