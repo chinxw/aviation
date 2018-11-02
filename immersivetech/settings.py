@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'db',
     'aviation',
     'django_lti_auth',
+    'lti_redirect',
 ]
 
 MIDDLEWARE = [
@@ -116,10 +117,10 @@ PYLTI_CONFIG = {
         }
     },
     "method_hooks":{
-        "valid_lti_request":"",
-        "invalid_lti_request":""
+        "valid_lti_request":"lti_redirect.views.store_to_session",
+        # "invalid_lti_request":"aviation.views.denied",
     },
-    "next_url":""
+    "next_url":"/lti_redirect"
 }
 
 
