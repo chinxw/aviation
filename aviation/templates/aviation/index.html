@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block body_block %}
     <script>
         var os = getMobileOperatingSystem();
@@ -34,20 +35,17 @@
   <a-scene>
     <a-assets>
       <video crossorigin='anonymous' playsinline id='tutorialVid' src='https://s3-ap-southeast-2.amazonaws.com/unsw-immersive-solutions-data/360+aviation+agsm/aviationVRtutorial1_1.mp4'></video>
-      <img crossorigin="anonymous" id="intro_img" src="/static/images/aviation_intro_image.png"/>
-      <!-- <img id="play_btn_img" crossorigin="anonymous" src="https://s3-ap-southeast-2.amazonaws.com/unsw-immersive-solutions-data/textures/play_button.png"/>
-      <img id="pause_btn_img" crossorigin="anonymous" src="/images/aviation/pause_button.png"/> -->
-      <img id="play_btn_img" crossorigin="anonymous" src="/static/images/play.png"/>
-      <img id="pause_btn_img" crossorigin="anonymous" src="/static/images/stop.png"/>
-      <img id="btn_selected_img" crossorigin="anonymous" src="/static/images/button_active.png"/>
-      <img id="btn_img" crossorigin="anonymous" src="/static/images/button_inactive.png"/>
-      <img id="menu_active_img" crossorigin="anonymous" src="/static/images/menu_active.png"/>
-      <img id="menu_inactive_img" crossorigin="anonymous" src="/static/images/menu_inactive.png"/>
-      <img id="panel_bottom" crossorigin="anonymous" src="/static/images/panel_botton2.png"/>
-      <img id="panel_top" crossorigin="anonymous" src="/static/images/panel_top.png"/>
-      <img id="panel_logo" crossorigin="anonymous" src="/static/images/unsw_logo.png"/>
-      <img id="tail" crossorigin="anonymous" src="/static/images/tail.png"/>
-
+      <img crossorigin="anonymous" id="intro_img" src="{% static "aviation/images/aviation_intro_image.png" %}"/>
+      <img crossorigin="anonymous" id="play_btn_img" src="{% static "aviation/images/play.png" %}"/>
+      <img crossorigin="anonymous" id="pause_btn_img" src="{% static "aviation/images/stop.png" %}"/>
+      <img crossorigin="anonymous" id="btn_selected_img" src="{% static "aviation/images/button_active.png" %}"/>
+      <img crossorigin="anonymous" id="btn_img" src="{% static "aviation/images/button_inactive.png" %}"/>
+      <img crossorigin="anonymous" id="menu_active_img" src="{% static "aviation/images/menu_active.png" %}"/>
+      <img crossorigin="anonymous" id="menu_inactive_img" src="{% static "aviation/images/menu_inactive.png" %}"/>
+      <img crossorigin="anonymous" id="panel_bottom" src="{% static "aviation/images/panel_botton2.png" %}"/>
+      <img crossorigin="anonymous" id="panel_top" src="{% static "aviation/images/panel_top.png" %}"/>
+      <img crossorigin="anonymous" id="tail" src="{% static "aviation/images/tail.png" %}"/>
+      <img crossorigin="anonymous" id="panel_logo" src="{% static "images/unsw_logo.png" %}"/>
     </a-assets>
     <a-entity id="camera" position="0 1.6 0">
         <a-entity id="subcamera" position="0 -1.6 0">

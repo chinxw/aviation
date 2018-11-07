@@ -21,7 +21,7 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('aviation', AviationView.IndexView.your_view, name="aviation"),
+    path('aviation', AviationView.index, name="index"),
     path('lti/', include('django_lti_auth.urls')),
     path('lti_redirect/', LTIredirectView.redirect_to_app, name="lti_redirect"),
 ]

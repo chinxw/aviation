@@ -552,12 +552,26 @@ div.unsw_logo img {
 		width: 150px;
 		height: 60px;
 	}
+	div.startDiv div.credit{
+		position: absolute;
+		bottom: 5px;
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+	}
 }
 
 @media screen and (max-width: 520px) {
 	div.unsw_logo img {
 		width: 150px;
 		height: 60px;
+	}
+	div.startDiv div.credit{
+		position: absolute;
+		bottom: 5px;
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
 	}
 }
 
