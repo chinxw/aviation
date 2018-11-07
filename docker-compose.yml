@@ -5,9 +5,9 @@ services:
     image: postgres
   web:
     build: .
-    command: python3 manage.py runserver 0.0.0.0:8000
+    command: env/bin/python3 immersivetech/manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/immersivetech3
+      - .:/immersivetech3/immersivetech
     ports:
       - "8000:8000"
     depends_on:

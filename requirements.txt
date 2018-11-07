@@ -1,5 +1,4 @@
 Django==2.1.2
 psycopg2
 git+https://github.com/rohitjose/django-lti-auth.git
-virtualenv
 psycopg2-binary

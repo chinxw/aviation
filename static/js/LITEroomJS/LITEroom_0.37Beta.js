@@ -1811,8 +1811,8 @@ AFRAME.registerComponent('lite.videoplayer',{
     btn_selColor: {default: "#ff0"},
     playBtn_width: {default: 0.5},
     playBtn_height: {default: 0.5},
-    playBtn_src: {default: "/static/images/icons8-circled-play-80.png"}, // texture file for play button
-    pauseBtn_src: {default: "/static/images/icons8-pause-button-80.png"}, // texture file for pause button
+    playBtn_src: {default: "/static/aviation/images/icons8-circled-play-80.png"}, // texture file for play button
+    pauseBtn_src: {default: "/static/aviation/images/icons8-pause-button-80.png"}, // texture file for pause button
   },
   init: function(){
     //console.log("video player is here!");

@@ -16,8 +16,9 @@ def store_to_session(post, msg):
 def redirect_to_app(request):
     request.session['custom_project'] = post_data['custom_project']
     request.session['ext_user_username'] = post_data['ext_user_username']
+    request.session.set_expiry(30*60)
     return redirect('/'+request.session['custom_project'])
-    
+
     # print("args")
     # request = kwargs.pop('request', None)
     # print(kwargs.get('request'))
