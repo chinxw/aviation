@@ -5,18 +5,13 @@ from django.http import HttpRequest
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 
-# Create your views here.
-post_data = {}
-
 @csrf_exempt
-def store_to_session(post, msg):
-    global post_data
-    post_data = post
+def store_to_session(post, request):
+    request.session['custom_project'] = post['custom_project']
+    request.session['ext_user_username'] = post['ext_user_username']
+    request.session.set_expiry(30*60)
 
 def redirect_to_app(request):
-    request.session['custom_project'] = post_data['custom_project']
-    request.session['ext_user_username'] = post_data['ext_user_username']
-    request.session.set_expiry(30*60)
     return redirect('/'+request.session['custom_project'])
 
     # print("args")
