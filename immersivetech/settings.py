@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'db',
+    'db',
     'aviation',
     'django_lti_auth',
     'lti_redirect',
@@ -88,6 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
+        'PASSWORD': 'postgres_password',
         'HOST': 'db',
         'PORT': 5432,
     }
@@ -115,11 +116,12 @@ AUTH_PASSWORD_VALIDATORS = [
 PYLTI_CONFIG = {
     "consumers": {
         "2E99758548972A8E8822AD47FA1017FF72F06F3FF6A016851F45C398732BC50C": {
-            "secret": "this is a test"
+            "secret": "Literoom@1"
         }
     },
     "method_hooks":{
         "valid_lti_request":"lti_redirect.views.store_to_session",
+        # "invalid_lti_request":"lti_redirect.views.store_to_session",
         # "invalid_lti_request":"aviation.views.denied",
     },
     "next_url":"/lti_redirect"
@@ -144,9 +146,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
+
+
+
 # uncomment this when building
 # STATIC_ROOT = os.path.join(BASE_DIR,'static/')
-STATICFILES_DIRS = ( os.path.join(BASE_DIR, "static/"), )
+# STATICFILES_DIRS = ( os.path.join(BASE_DIR, "static/"), )
+
 
 # PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 # STATICFILES_DIRS = (

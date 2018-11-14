@@ -1,13 +1,17 @@
 version: '3'
 
 services:
-
     djangoapp:
         build: .
         volumes:
             - .:/immersivetech3/immersivetech
+            - static_volume:/immersivetech3/immersivetech/static
+            - media_volume:/immersivetech3/immersivetech/media
         networks:
             - nginx_network
+            - db_network
+        depends_on:
+            - db
 
     nginx:
         image: nginx:1.13
@@ -15,11 +19,29 @@ services:
             - 8000:80
         volumes:
             - ./config/nginx/conf.d:/etc/nginx/conf.d
+            - static_volume:/immersivetech3/immersivetech/static
+            - media_volume:/immersivetech3/immersivetech/media
         depends_on:
             - djangoapp
         networks:
             - nginx_network
+    
+    db:
+        image: postgres
+        env_file:
+            - config/db/db_env
+        networks:
+            - db_network
+        volumes:
+            - db_volume:/var/lib/postgresql/data
 
-    networks:
-        nginx_network:
-            driver: bridge
+networks: 
+    nginx_network:
+        driver: bridge
+    db_network:
+        driver: bridge
+
+volumes:
+    db_volume:
+    static_volume:
+    media_volume:

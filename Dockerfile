@@ -7,6 +7,7 @@ ADD requirements.txt /immersivetech3/
 ADD . /immersivetech3/immersivetech
 
 RUN pip install -r requirements.txt
+RUN python3 immersivetech/manage.py collectstatic --noinput
 
 EXPOSE 8000
 
