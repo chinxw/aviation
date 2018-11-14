@@ -4,15 +4,13 @@ FROM python:3.6
 RUN mkdir /immersivetech3
 WORKDIR /immersivetech3
 ADD requirements.txt /immersivetech3/
-ADD docker-entrypoint.sh /immersivetech3/
 ADD . /immersivetech3/immersivetech
 
-# Install virtualenv first then any needed packages specified in requirements.txt within the virtualenv
-RUN pip3 install virtualenv
-RUN virtualenv env
-RUN . env/bin/activate
-RUN env/bin/pip install -r requirements.txt
-RUN env/bin/python3 immersivetech/manage.py collectstatic --noinput
+RUN pip install -r requirements.txt
+
+EXPOSE 8000
+
+CMD ["gunicorn", "--chdir", "immersivetech", "--bind", ":8000", "immersivetech.wsgi:application"]
 
 
 
@@ -32,9 +30,13 @@ RUN env/bin/python3 immersivetech/manage.py collectstatic --noinput
 
 
 
+# ADD docker-entrypoint.sh /immersivetech3/
 
-
-
+# RUN pip3 install virtualenv
+# RUN virtualenv env
+# RUN . env/bin/activate
+# RUN env/bin/pip install -r requirements.txt
+# RUN env/bin/python3 immersivetech/manage.py collectstatic --noinput
 
 
 

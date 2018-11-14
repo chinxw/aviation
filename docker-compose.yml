@@ -1,14 +1,25 @@
 version: '3'
 
 services:
-  db:
-    image: postgres
-  web:
-    build: .
-    command: env/bin/python3 immersivetech/manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/immersivetech3/immersivetech
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
+
+    djangoapp:
+        build: .
+        volumes:
+            - .:/immersivetech3/immersivetech
+        networks:
+            - nginx_network
+
+    nginx:
+        image: nginx:1.13
+        ports:
+            - 8000:80
+        volumes:
+            - ./config/nginx/conf.d:/etc/nginx/conf.d
+        depends_on:
+            - djangoapp
+        networks:
+            - nginx_network
+
+    networks:
+        nginx_network:
+            driver: bridge
