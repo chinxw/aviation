@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 
 @csrf_exempt
 def store_to_session(post, request):
+    print("AAAAAAAAAAAaa")
     request.session['custom_project'] = post['custom_project']
     request.session['ext_user_username'] = post['ext_user_username']
     request.session.set_expiry(30*60)
