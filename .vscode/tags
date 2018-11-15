@@ -1,0 +1,140 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+0001_initial.py	../db/migrations/0001_initial.py	1;"	kind:file	line:1
+0002_auto_20181024_1035.py	../db/migrations/0002_auto_20181024_1035.py	1;"	kind:file	line:1
+0003_auto_20181024_1047.py	../db/migrations/0003_auto_20181024_1047.py	1;"	kind:file	line:1
+0004_auto_20181026_0014.py	../db/migrations/0004_auto_20181026_0014.py	1;"	kind:file	line:1
+0005_auto_20181107_0516.py	../db/migrations/0005_auto_20181107_0516.py	1;"	kind:file	line:1
+0006_auto_20181114_0445.py	../db/migrations/0006_auto_20181114_0445.py	1;"	kind:file	line:1
+0007_auto_20181114_0525.py	../db/migrations/0007_auto_20181114_0525.py	1;"	kind:file	line:1
+0008_auto_20181114_0558.py	../db/migrations/0008_auto_20181114_0558.py	1;"	kind:file	line:1
+ALLOWED_HOSTS	../immersivetech/settings.py	/^ALLOWED_HOSTS = []$/;"	kind:variable	line:31
+AUTH_PASSWORD_VALIDATORS	../immersivetech/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:101
+AviationConfig	../aviation/apps.py	/^class AviationConfig(AppConfig):$/;"	kind:class	line:3
+BASE_DIR	../immersivetech/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+DATABASES	../immersivetech/settings.py	/^DATABASES = {$/;"	kind:variable	line:86
+DEBUG	../immersivetech/settings.py	/^DEBUG = True$/;"	kind:variable	line:25
+DbConfig	../db/apps.py	/^class DbConfig(AppConfig):$/;"	kind:class	line:4
+INSTALLED_APPS	../immersivetech/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:36
+LANGUAGE_CODE	../immersivetech/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:134
+LtiRedirectConfig	../lti_redirect/apps.py	/^class LtiRedirectConfig(AppConfig):$/;"	kind:class	line:4
+MEDIA_ROOT	../immersivetech/settings.py	/^MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')$/;"	kind:variable	line:150
+MIDDLEWARE	../immersivetech/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:49
+Migration	../db/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	../db/migrations/0002_auto_20181024_1035.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../db/migrations/0003_auto_20181024_1047.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../db/migrations/0004_auto_20181026_0014.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../db/migrations/0005_auto_20181107_0516.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../db/migrations/0006_auto_20181114_0445.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../db/migrations/0007_auto_20181114_0525.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	../db/migrations/0008_auto_20181114_0558.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+PYLTI_CONFIG	../immersivetech/settings.py	/^PYLTI_CONFIG = {$/;"	kind:variable	line:116
+ROOT_URLCONF	../immersivetech/settings.py	/^ROOT_URLCONF = 'immersivetech.urls'$/;"	kind:variable	line:59
+SECRET_KEY	../immersivetech/settings.py	/^SECRET_KEY = '78l#sixnu((oigugm+0&)v2sufiw@55oelu)ynksg896%@)!x#'$/;"	kind:variable	line:22
+STATIC_ROOT	../immersivetech/settings.py	/^STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')$/;"	kind:variable	line:149
+STATIC_URL	../immersivetech/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:148
+Stat	../db/models.py	/^class Stat(models.Model):$/;"	kind:class	line:11
+TEMPLATES	../immersivetech/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:61
+TEMPLATE_DIR	../immersivetech/settings.py	/^TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')$/;"	kind:variable	line:17
+TIME_ZONE	../immersivetech/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:136
+USE_I18N	../immersivetech/settings.py	/^USE_I18N = True$/;"	kind:variable	line:138
+USE_L10N	../immersivetech/settings.py	/^USE_L10N = True$/;"	kind:variable	line:140
+USE_TZ	../immersivetech/settings.py	/^USE_TZ = True$/;"	kind:variable	line:142
+User	../db/models.py	/^class User(models.Model):$/;"	kind:class	line:5
+WSGI_APPLICATION	../immersivetech/settings.py	/^WSGI_APPLICATION = 'immersivetech.wsgi.application'$/;"	kind:variable	line:80
+__init__.py	../aviation/__init__.py	1;"	kind:file	line:1
+__init__.py	../aviation/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../db/__init__.py	1;"	kind:file	line:1
+__init__.py	../db/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../immersivetech/__init__.py	1;"	kind:file	line:1
+__init__.py	../lti_redirect/__init__.py	1;"	kind:file	line:1
+__init__.py	../lti_redirect/migrations/__init__.py	1;"	kind:file	line:1
+admin.py	../aviation/admin.py	1;"	kind:file	line:1
+admin.py	../db/admin.py	1;"	kind:file	line:1
+admin.py	../lti_redirect/admin.py	1;"	kind:file	line:1
+application	../immersivetech/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+apps.py	../aviation/apps.py	1;"	kind:file	line:1
+apps.py	../db/apps.py	1;"	kind:file	line:1
+apps.py	../lti_redirect/apps.py	1;"	kind:file	line:1
+category	../db/models.py	/^    category = models.CharField(max_length=4000)$/;"	kind:variable	line:18
+date_entered	../db/models.py	/^    date_entered = models.DateTimeField(default=timezone.now())$/;"	kind:variable	line:15
+dependencies	../db/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:13
+dependencies	../db/migrations/0002_auto_20181024_1035.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../db/migrations/0003_auto_20181024_1047.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../db/migrations/0004_auto_20181026_0014.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../db/migrations/0005_auto_20181107_0516.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../db/migrations/0006_auto_20181114_0445.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../db/migrations/0007_auto_20181114_0525.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	../db/migrations/0008_auto_20181114_0558.py	/^    dependencies = [$/;"	kind:variable	line:10
+email	../db/models.py	/^    email = models.EmailField(max_length=255)$/;"	kind:variable	line:9
+field	../db/migrations/0001_initial.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='db.User'),$/;"	kind:variable	line:40
+field	../db/migrations/0002_auto_20181024_1035.py	/^            field=models.DateTimeField(default=datetime.datetime(2018, 10, 24, 10, 35, 20, 286430, tzinfo=utc)),$/;"	kind:variable	line:18
+field	../db/migrations/0003_auto_20181024_1047.py	/^            field=models.DateTimeField(default=datetime.datetime(2018, 10, 24, 10, 47, 49, 866273, tzinfo=utc)),$/;"	kind:variable	line:18
+field	../db/migrations/0004_auto_20181026_0014.py	/^            field=models.DateTimeField(default=datetime.datetime(2018, 10, 26, 0, 14, 41, 889356, tzinfo=utc)),$/;"	kind:variable	line:18
+field	../db/migrations/0005_auto_20181107_0516.py	/^            field=models.DateTimeField(default=datetime.datetime(2018, 11, 7, 5, 16, 2, 729235, tzinfo=utc)),$/;"	kind:variable	line:18
+field	../db/migrations/0006_auto_20181114_0445.py	/^            field=models.DateTimeField(default=datetime.datetime(2018, 11, 14, 4, 45, 24, 506050, tzinfo=utc)),$/;"	kind:variable	line:18
+field	../db/migrations/0007_auto_20181114_0525.py	/^            field=models.DateTimeField(default=datetime.datetime(2018, 11, 14, 5, 25, 56, 670081, tzinfo=utc)),$/;"	kind:variable	line:18
+field	../db/migrations/0008_auto_20181114_0558.py	/^            field=models.DateTimeField(default=datetime.datetime(2018, 11, 14, 5, 58, 36, 372643, tzinfo=utc)),$/;"	kind:variable	line:18
+fields	../db/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:19
+fields	../db/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:30
+id	../db/models.py	/^    id = models.CharField(max_length=255, primary_key=True)$/;"	kind:variable	line:6
+id	../db/models.py	/^    id = models.IntegerField(primary_key=True)$/;"	kind:variable	line:12
+index	../aviation/views.py	/^def index(request):$/;"	kind:function	line:6
+initial	../db/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:11
+manage.py	../manage.py	1;"	kind:file	line:1
+model_name	../db/migrations/0001_initial.py	/^            model_name='stat',$/;"	kind:variable	line:38
+model_name	../db/migrations/0002_auto_20181024_1035.py	/^            model_name='stat',$/;"	kind:variable	line:16
+model_name	../db/migrations/0003_auto_20181024_1047.py	/^            model_name='stat',$/;"	kind:variable	line:16
+model_name	../db/migrations/0004_auto_20181026_0014.py	/^            model_name='stat',$/;"	kind:variable	line:16
+model_name	../db/migrations/0005_auto_20181107_0516.py	/^            model_name='stat',$/;"	kind:variable	line:16
+model_name	../db/migrations/0006_auto_20181114_0445.py	/^            model_name='stat',$/;"	kind:variable	line:16
+model_name	../db/migrations/0007_auto_20181114_0525.py	/^            model_name='stat',$/;"	kind:variable	line:16
+model_name	../db/migrations/0008_auto_20181114_0558.py	/^            model_name='stat',$/;"	kind:variable	line:16
+models.py	../aviation/models.py	1;"	kind:file	line:1
+models.py	../db/models.py	1;"	kind:file	line:1
+models.py	../lti_redirect/models.py	1;"	kind:file	line:1
+name	../aviation/apps.py	/^    name = 'aviation'$/;"	kind:variable	line:4
+name	../db/apps.py	/^    name = 'db'$/;"	kind:variable	line:5
+name	../db/migrations/0001_initial.py	/^            name='Stat',$/;"	kind:variable	line:18
+name	../db/migrations/0001_initial.py	/^            name='User',$/;"	kind:variable	line:29
+name	../db/migrations/0001_initial.py	/^            name='user_id',$/;"	kind:variable	line:39
+name	../db/migrations/0002_auto_20181024_1035.py	/^            name='date_entered',$/;"	kind:variable	line:17
+name	../db/migrations/0003_auto_20181024_1047.py	/^            name='date_entered',$/;"	kind:variable	line:17
+name	../db/migrations/0004_auto_20181026_0014.py	/^            name='date_entered',$/;"	kind:variable	line:17
+name	../db/migrations/0005_auto_20181107_0516.py	/^            name='date_entered',$/;"	kind:variable	line:17
+name	../db/migrations/0006_auto_20181114_0445.py	/^            name='date_entered',$/;"	kind:variable	line:17
+name	../db/migrations/0007_auto_20181114_0525.py	/^            name='date_entered',$/;"	kind:variable	line:17
+name	../db/migrations/0008_auto_20181114_0558.py	/^            name='date_entered',$/;"	kind:variable	line:17
+name	../lti_redirect/apps.py	/^    name = 'lti_redirect'$/;"	kind:variable	line:5
+name_family	../db/models.py	/^    name_family = models.CharField(max_length=128)$/;"	kind:variable	line:8
+name_given	../db/models.py	/^    name_given = models.CharField(max_length=128)$/;"	kind:variable	line:7
+operations	../db/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:16
+operations	../db/migrations/0002_auto_20181024_1035.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../db/migrations/0003_auto_20181024_1047.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../db/migrations/0004_auto_20181026_0014.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../db/migrations/0005_auto_20181107_0516.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../db/migrations/0006_auto_20181114_0445.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../db/migrations/0007_auto_20181114_0525.py	/^    operations = [$/;"	kind:variable	line:14
+operations	../db/migrations/0008_auto_20181114_0558.py	/^    operations = [$/;"	kind:variable	line:14
+raw_data	../db/models.py	/^    raw_data = models.CharField(max_length=4000)$/;"	kind:variable	line:17
+redirect_to_app	../lti_redirect/views.py	/^def redirect_to_app(request):$/;"	kind:function	line:14
+settings.py	../immersivetech/settings.py	1;"	kind:file	line:1
+store_to_session	../lti_redirect/views.py	/^def store_to_session(post, request):$/;"	kind:function	line:9
+tag	../db/models.py	/^    tag = models.CharField(max_length=4000)$/;"	kind:variable	line:14
+template_name	../aviation/views.py	/^template_name = 'aviation\/index.html'$/;"	kind:variable	line:4
+tests.py	../aviation/tests.py	1;"	kind:file	line:1
+tests.py	../db/tests.py	1;"	kind:file	line:1
+tests.py	../lti_redirect/tests.py	1;"	kind:file	line:1
+title_text	../aviation/views.py	/^title_text = "AviationVR"$/;"	kind:variable	line:3
+url	../db/models.py	/^    url = models.CharField(max_length=4000)$/;"	kind:variable	line:16
+urlpatterns	../immersivetech/urls.py	/^urlpatterns = [$/;"	kind:variable	line:22
+urls.py	../immersivetech/urls.py	1;"	kind:file	line:1
+user_id	../db/models.py	/^    user_id = models.ForeignKey('User', on_delete=models.CASCADE)$/;"	kind:variable	line:13
+views.py	../aviation/views.py	1;"	kind:file	line:1
+views.py	../db/views.py	1;"	kind:file	line:1
+views.py	../lti_redirect/views.py	1;"	kind:file	line:1
+wsgi.py	../immersivetech/wsgi.py	1;"	kind:file	line:1
